@@ -22,6 +22,7 @@ export default class World
         this.preLoader = this.experience.preloader
         
         this.allbtns = document.querySelectorAll('.sideBtn')
+        this.allProjects = this.experience.camera.allProjects
 
         // this.height = this.experience.config.maxHeight
         // console.log(this.height)
@@ -118,7 +119,7 @@ export default class World
                 trigger: ".landing",
                 start: "0px top",
                 // pin: true,
-                markers: true,
+                // markers: true,
                 // end: "+=" + window.innerHeight * 3,
                 scrub: 0.5,
                 onToggle: self => {
@@ -126,7 +127,7 @@ export default class World
                   self.isActive? document.getElementById('home').classList.add('active') : document.getElementById('home').classList.remove('active')
                 },
                 onEnterBack: ()=> {
-                    this.experience.camera.controls.target.set(-20., 0.7, .4)
+                    this.experience.camera.controls.target.set(-20., 0.7, .3)
                   
                 },
                 onUpdate: self=>
@@ -193,6 +194,11 @@ export default class World
                     this.dungeon.project1.layers.set(1)
                     this.dungeon.project2.layers.set(1)
                     this.dungeon.project3.layers.set(1)
+                    for(let project of this.allProjects)
+                    {
+                        if (project.classList.contains('active'))project.classList.remove('active')
+                        this.allProjects[0].classList.add('active')
+                    }
                     
                 },
                 onEnterBack:()=>
@@ -200,6 +206,11 @@ export default class World
                     this.dungeon.project1.layers.set(1)
                     this.dungeon.project2.layers.set(1)
                     this.dungeon.project3.layers.set(1)
+                    for(let project of this.allProjects)
+                    {
+                        if (project.classList.contains('active'))project.classList.remove('active')
+                        this.allProjects[0].classList.add('active')
+                    }
                     
                 },
                 onLeave:()=>
@@ -207,6 +218,7 @@ export default class World
                     this.dungeon.project1.layers.set(2)
                     this.dungeon.project2.layers.set(2)
                     this.dungeon.project3.layers.set(2)
+                    this.experience.camera.projectLoc = 3
                     
                 },
                 onLeaveBack:()=>
@@ -214,15 +226,18 @@ export default class World
                     this.dungeon.project1.layers.set(2)
                     this.dungeon.project2.layers.set(2)
                     this.dungeon.project3.layers.set(2)
+                    this.experience.camera.projectLoc = 3
                     
                 },
                 onToggle: self => {
                     // console.log("work, isActive:", self.isActive)
                     this.onProjects = self.isActive
                     self.isActive? document.getElementById('work').classList.add('active') : document.getElementById('work').classList.remove('active')
+
                     document.querySelector('.projectBtns').style.display = self.isActive? 'flex' : 'none'
                     document.querySelector('.projectTitle').style.display = self.isActive? 'block' : 'none'
-                    document.querySelector('.projectInfo').style.display = self.isActive? 'block' : 'none'
+                    
+                    
 
                     if(self.isActive)
                     {
@@ -234,7 +249,7 @@ export default class World
                     // console.log("work", self.progress)
                     document.getElementById('workUnderLine').style.width = `${100 * self.progress}%`
                 },
-                markers: true,
+                // markers: true,
                 // end: "+=2px", //+ window.innerHeight,
                 // snap:true,
                 pinSpacer:false,
@@ -307,7 +322,7 @@ export default class World
                 gsap.to(window , .1, {scrollTo: {y: "max"}})
                 } ,
             // snap:true,
-            markers: true,
+            // markers: true,
             // end: "+=2000px",// + window.innerHeight * 2.5,
             scrub: 0.2,
             // preventOverlaps: true,

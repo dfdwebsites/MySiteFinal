@@ -187,7 +187,7 @@ export default class Raycaster
                 this.intersectsObjects = this.raycaster.intersectObjects(this.objectsToTest)
                 if(this.intersectsObjects.length)
                 {
-                    document.documentElement.style.cursor = 'pointer';
+                    // document.documentElement.style.cursor = 'pointer';
                     
                     this.hoveredObj = this.intersectsObjects[0].object
                 if (this.hoveredObj.name === "project1")
@@ -217,7 +217,7 @@ export default class Raycaster
                     this.scene.project1.material.uniforms.uStrength.value -= this.scene.project1.material.uniforms.uStrength.value <= 0.1? 0 : 0.003
                     this.scene.project2.material.uniforms.uStrength.value -= this.scene.project2.material.uniforms.uStrength.value <= 0.1? 0 : 0.003
                     this.scene.project3.material.uniforms.uStrength.value -= this.scene.project3.material.uniforms.uStrength.value <= 0.1? 0 : 0.003
-                    document.documentElement.style.cursor = 'default';
+                    // document.documentElement.style.cursor = 'default';
                 }
                 
                 

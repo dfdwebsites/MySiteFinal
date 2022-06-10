@@ -21,6 +21,8 @@ export default class Camera
         this.resources = this.experience.resources
         
         this.height = this.experience.config.maxHeight
+        this.projectLoc = 3
+        this.allProjects = document.querySelectorAll('.allProjects')
     
 
         if (this.debug)
@@ -180,7 +182,7 @@ export default class Camera
         this.controls.enableDamping = true
         this.controls.target.x = -20
         this.controls.target.y = this.sizes.mode === 'smallScreen'? 1.0 : 0.9
-        this.controls.target.z = 0.4
+        this.controls.target.z = 0.3
         this.controls.update()
 
         if (this.debug)
@@ -629,7 +631,7 @@ export default class Camera
    
     setProjectNav()
     {
-        this.projectLoc = 3
+        
         document.getElementById('projectLeft').addEventListener('click', ()=>
         {
             // if(this.logic.mode ==='project' && projectLocation !== 1)
@@ -637,16 +639,31 @@ export default class Camera
             {
                 this.transitions.work(1)
                 this.projectLoc--
+                for(let project of this.allProjects)
+                {
+                    if (project.classList.contains('active'))project.classList.remove('active')
+                    this.allProjects[1].classList.add('active')
+                }
             }
             else if (this.projectLoc === 2)
             {
                 this.transitions.workLeft(1)
                 this.projectLoc --
+                for(let project of this.allProjects)
+                {
+                    if (project.classList.contains('active'))project.classList.remove('active')
+                    this.allProjects[2].classList.add('active')
+                }
             }
             else if (this.projectLoc === 1)
             {
                 this.transitions.workRight(1)
                 this.projectLoc = 3
+                for(let project of this.allProjects)
+                {
+                    if (project.classList.contains('active'))project.classList.remove('active')
+                    this.allProjects[0].classList.add('active')
+                }
             }
 
         })
@@ -657,16 +674,31 @@ export default class Camera
             {
                 this.transitions.work(1)
                 this.projectLoc++
+                for(let project of this.allProjects)
+                {
+                    if (project.classList.contains('active'))project.classList.remove('active')
+                    this.allProjects[1].classList.add('active')
+                }
             }
             else if (this.projectLoc === 2 )
             {
                 this.transitions.workRight(1)
                 this.projectLoc ++
+                for(let project of this.allProjects)
+                {
+                    if (project.classList.contains('active'))project.classList.remove('active')
+                    this.allProjects[0].classList.add('active')
+                }
             }
             else if (this.projectLoc === 3 )
             {
                 this.transitions.workLeft(1)
                 this.projectLoc = 1
+                for(let project of this.allProjects)
+                {
+                    if (project.classList.contains('active'))project.classList.remove('active')
+                    this.allProjects[2].classList.add('active')
+                }
             }
         })
 

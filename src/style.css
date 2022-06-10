@@ -77,6 +77,19 @@ body
   align-items: center;
   flex-direction: column;
 }
+.flexCenter
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flexCenterColumn
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .experience
 {
@@ -576,8 +589,8 @@ textarea.input {
 {
   /* height: 1000px; */
   padding-top: 90px;
-  padding-bottom: 80px;
-  justify-content: space-between;
+  padding-bottom: 50px;
+  justify-content: flex-end;
   z-index: 99;
   /* position: fixed; */
   height: 100vh;
@@ -587,13 +600,60 @@ textarea.input {
   /* position: relative; */
   /* top:-35%; */
   display: none;
+  margin-bottom: auto;
 }
-.projectInfo
+
+
+.allProjects
 {
-  /* position: relative; */
+  background-color: rgba(0,0,0,0.3);
+  padding: 20px;
   display: none;
-  /* bottom: -10%; */
 }
+.allProjects.active
+{
+  display: block;
+}
+
+
+
+.iconUsed
+{
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  gap: 5px;
+}
+
+.iconUsed i
+{
+  font-size: 35px;
+}
+.iconUsed p
+{
+  font-size: 22px;
+}
+.linksContainer
+{
+  gap:20px;
+  margin-bottom: 20px;
+  color: #fafafa;
+}
+.linksContainer svg
+{
+  fill: #fff;
+}
+.liveLink:hover svg,
+.liveLink:focus svg
+{
+  fill: #2FCDFF;
+}
+.codeLink:hover svg,
+.codeLink:focus svg
+{
+  
+  fill: #2FCDFF;
+}
+
 .contact
 {
   display: flex;
@@ -616,10 +676,10 @@ textarea.input {
   color: white;
   text-align: center;
   position: fixed;
-  /* left: 75vw; */
   bottom: 3%;
   /* transform: translate(-50%, -50%); */
 }
+
 .footer
 {
   padding-top: 30px;
