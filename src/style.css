@@ -690,14 +690,16 @@ textarea.input {
   margin: 0 auto;
   gap: 10px;
 }
-.footer svg
+.footer a
 {
-    fill:white;
+    color:white;
+    font-size: 30px;
+    text-decoration: none;
 }
-.footer svg:hover,
-.footer svg:focus
+.footer a:hover,
+.footer a:focus
 {
-  fill:#2FCDFF;
+  color:#2FCDFF;
 }
 
 
